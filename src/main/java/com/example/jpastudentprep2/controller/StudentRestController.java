@@ -37,8 +37,12 @@ public class StudentRestController {
     }
 
     @GetMapping("/students/{name}")
-    public List<Student> getAllStudentsByName(@PathVariable String name) {
-        return studentRepository.findByName(name);
+    public ResponseEntity<List<Student>> getAllStudentsByName(@PathVariable String name) {
+        List<Student> students = studentRepository.findByName(name);
+        if (students.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(students);
 
     }
 

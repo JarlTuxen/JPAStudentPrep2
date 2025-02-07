@@ -1,11 +1,12 @@
 #start with docker-compose up -d
 #stop with docker-compose down
-
+#docker run --detach -p 3307:3306 --env="MYSQL_ROOT_PASSWORD=Dat23C, MYSQL_USER=kurt, MYSQL_PASSWORD=x" mysql
 services:
   mysql:
     image: mysql:8.0   # MySQL image version
     container_name: jpa_mysql_container  # Optional
     environment:
+      MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: Dat23C
       MYSQL_DATABASE: student
       MYSQL_USER: kurt
